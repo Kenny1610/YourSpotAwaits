@@ -136,7 +136,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         customInfoWindow.backgroundColor = .white
 
         customInfoWindow.parkingLotTitleLabel.text = currentParkingLot?.name
-        customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(currentParkingLot?.parkingSpaces) total"
+        customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(String(describing: currentParkingLot?.parkingSpaces)) total"
        
         
         //Return false so marker event is still handled by delegate

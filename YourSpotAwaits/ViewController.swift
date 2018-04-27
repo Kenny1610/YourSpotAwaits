@@ -12,9 +12,10 @@ import FirebaseAuth
 import GoogleMaps
 import GooglePlaces
 
+
+
 class ViewController: UITableViewController {
     
-
     var appUser: AppUser? {
         didSet {
             print("value set")
