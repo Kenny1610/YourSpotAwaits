@@ -24,6 +24,8 @@
 		965FCD5E20754069000AF00C /* CorrectInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */; };
 		965FCD60207748F3000AF00C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5F207748F3000AF00C /* LoginViewController.swift */; };
 		96785A752081D4EE007B629C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96785A742081D4EE007B629C /* RegisterViewController.swift */; };
+		96D9BF20209443EC003FDBC3 /* HarperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D9BF1F209443EC003FDBC3 /* HarperCell.swift */; };
+		96D9BF22209444E7003FDBC3 /* HarperMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D9BF21209444E7003FDBC3 /* HarperMapController.swift */; };
 		C0209B1A4CD4A0E5A766D22F /* Pods_YourSpotAwaits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99FCD47D9C392D3055AFF42 /* Pods_YourSpotAwaits.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectInfoWindow.swift; sourceTree = "<group>"; };
 		965FCD5F207748F3000AF00C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96785A742081D4EE007B629C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		96D9BF1F209443EC003FDBC3 /* HarperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarperCell.swift; sourceTree = "<group>"; };
+		96D9BF21209444E7003FDBC3 /* HarperMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarperMapController.swift; sourceTree = "<group>"; };
 		E6E64D0092B75CCDB5F66793 /* Pods-YourSpotAwaits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourSpotAwaits.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourSpotAwaits/Pods-YourSpotAwaits.release.xcconfig"; sourceTree = "<group>"; };
 		F99FCD47D9C392D3055AFF42 /* Pods_YourSpotAwaits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourSpotAwaits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,7 +115,9 @@
 				965FCD592074A7D7000AF00C /* InfoWindow.swift */,
 				965FCD3F207494EE000AF00C /* ViewController.swift */,
 				965FCD4F2074A322000AF00C /* MapController.swift */,
+				96D9BF21209444E7003FDBC3 /* HarperMapController.swift */,
 				965FCD532074A54E000AF00C /* InstitutionCell.swift */,
+				96D9BF1F209443EC003FDBC3 /* HarperCell.swift */,
 				965FCD552074A578000AF00C /* Institutions.swift */,
 				965FCD41207494EE000AF00C /* Main.storyboard */,
 				965FCD44207494EF000AF00C /* Assets.xcassets */,
@@ -283,6 +289,7 @@
 			files = (
 				965FCD40207494EE000AF00C /* ViewController.swift in Sources */,
 				96785A752081D4EE007B629C /* RegisterViewController.swift in Sources */,
+				96D9BF22209444E7003FDBC3 /* HarperMapController.swift in Sources */,
 				9649AE6820910DE70087BC4D /* UserDefaultsManager.swift in Sources */,
 				9649AE6A20910F280087BC4D /* FirebaseAPI.swift in Sources */,
 				965FCD502074A322000AF00C /* MapController.swift in Sources */,
@@ -291,6 +298,7 @@
 				965FCD542074A54E000AF00C /* InstitutionCell.swift in Sources */,
 				965FCD3E207494EE000AF00C /* AppDelegate.swift in Sources */,
 				965FCD5A2074A7D7000AF00C /* InfoWindow.swift in Sources */,
+				96D9BF20209443EC003FDBC3 /* HarperCell.swift in Sources */,
 				965FCD60207748F3000AF00C /* LoginViewController.swift in Sources */,
 				965FCD5E20754069000AF00C /* CorrectInfoWindow.swift in Sources */,
 			);
