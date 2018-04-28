@@ -13,13 +13,13 @@ import GooglePlaces
 class Institutions {
     let institutionName: String
     var institutionImage: UIImage
-//    let parkingLots: [ParkingLots]
+    let parkingLots: [ParkingLots]
     
     
-    init(instituionName: String, institutionImage: UIImage) {
+    init(instituionName: String, institutionImage: UIImage, parkingLots: [ParkingLots]) {
         self.institutionName = instituionName
         self.institutionImage = institutionImage
-//        self.parkingLots = [parkingLots]
+        self.parkingLots = parkingLots
     }
     
 }

@@ -29,7 +29,8 @@ class ViewController: UITableViewController {
     
     var schools: [Institutions]?
     
-    let institutions = [Institutions(instituionName: "Northern Illinois University", institutionImage: #imageLiteral(resourceName: "NIU-72"))]
+    let institutions = [Institutions(instituionName: "Northern Illinois University", institutionImage: #imageLiteral(resourceName: "NIU-72"), parkingLots: [ParkingLots(name: "NIU Parking Deck", location: CLLocationCoordinate2DMake(41.932347, -88.766415), zoom: 16.0, parkingSpaces: 969), ParkingLots(name: "Parking Lot C", location: CLLocationCoordinate2DMake(41.935683, -88.771528), zoom: 16.0, parkingSpaces: 109), ParkingLots(name: "Parking Lot 2", location: CLLocationCoordinate2DMake(41.936876, -88.762379), zoom: 16.0, parkingSpaces: 261), ParkingLots(name: "Parking Lot A", location: CLLocationCoordinate2DMake(41.939165, -88.760849), zoom: 16.0, parkingSpaces: 85)]), Institutions(instituionName: "Harper College", institutionImage: #imageLiteral(resourceName: "Harper-73"), parkingLots: [ParkingLots(name: "Lot 1", location: CLLocationCoordinate2DMake(42.079247, -88.073280), zoom: 16, parkingSpaces: 280), ParkingLots(name: "Lot 2", location: CLLocationCoordinate2DMake(42.079108, -88.071447), zoom: 16, parkingSpaces: 336), ParkingLots(name: "Lot 3", location: CLLocationCoordinate2DMake(42.079096, -88.070238), zoom: 16, parkingSpaces: 210), ParkingLots(name: "Lot 4", location: CLLocationCoordinate2DMake(42.079729, -88.068401), zoom: 16, parkingSpaces: 250)])]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,13 +57,13 @@ class ViewController: UITableViewController {
     
     
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Institutions"
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.lightGray
-        return label
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let label = UILabel()
+//        label.text = "Institutions"
+//        label.textAlignment = .center
+//        label.backgroundColor = UIColor.lightGray
+//        return label
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -70,30 +71,41 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedInstitution = self.schools?[indexPath.row]
-        
+        if indexPath.row == 0 {
         let mapController = MapController()
         
         mapController.school = selectedInstitution
         
         let navController = UINavigationController(rootViewController: mapController)
         present(navController, animated: true, completion: nil)
-        
+        } else if indexPath.row == 1 {
+            let harperMapController = HarperController()
+            harperMapController.school = selectedInstitution
+            
+            let navController = UINavigationController(rootViewController: harperMapController)
+            present(navController, animated: true, completion: nil)
+            
+        }
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return institutions.count
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! InstitutionCell
         
-        let school = schools?[indexPath.row]
-        cell.school = school
-        
+        let school = institutions[indexPath.row]
+        cell.textLabel?.text = school.institutionName
+        cell.imageView?.image = school.institutionImage
         cell.textLabel?.textColor = .black
-        
+            
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 86
     }
     
 

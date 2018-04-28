@@ -1,8 +1,8 @@
 //
-//  MapController.swift
+//  HarperMapController.swift
 //  YourSpotAwaits
 //
-//  Created by Kendall McCaskill on 4/4/18.
+//  Created by Kendall McCaskill on 4/28/18.
 //  Copyright © 2018 YourSpotAwaits. All rights reserved.
 //
 
@@ -11,33 +11,33 @@ import GooglePlaces
 import GoogleMaps
 import Charts
 
-class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
+class HarperController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     
     let shapeLayer = CAShapeLayer()
     var mapView: GMSMapView?
     var school: Institutions?
-   
+    
     
     var tappedMarker: GMSMarker?
     var customInfoWindow = CorrectInfoWindow()
     
     
     
-    let collegeParkingLots = [ParkingLots(name: "NIU Parking Deck", location: CLLocationCoordinate2DMake(41.932347, -88.766415), zoom: 16.0, parkingSpaces: 969), ParkingLots(name: "Parking Lot C", location: CLLocationCoordinate2DMake(41.935683, -88.771528), zoom: 16.0, parkingSpaces: 109), ParkingLots(name: "Parking Lot 2", location: CLLocationCoordinate2DMake(41.936876, -88.762379), zoom: 16.0, parkingSpaces: 261), ParkingLots(name: "Parking Lot A", location: CLLocationCoordinate2DMake(41.939165, -88.760849), zoom: 16.0, parkingSpaces: 85)]
-
-    lazy var currentParkingLot = collegeParkingLots[0]
+    let harperParkingLots = [ParkingLots(name: "Lot 1", location: CLLocationCoordinate2DMake(42.079247, -88.073280), zoom: 17, parkingSpaces: 280), ParkingLots(name: "Lot 3", location: CLLocationCoordinate2DMake(42.079096, -88.070238), zoom: 17, parkingSpaces: 210), ParkingLots(name: "Lot 4", location: CLLocationCoordinate2DMake(42.079729, -88.068401), zoom: 17, parkingSpaces: 250)]
+    
+    lazy var currentParkingLot = harperParkingLots[0]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        let camera = GMSCameraPosition.camera(withLatitude: 41.932347, longitude: -88.766415, zoom: 16.0)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: 42.079247, longitude: -88.073280, zoom: 17)
         mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView?.mapType = .satellite
         view = mapView
         
-        let currentLocation = collegeParkingLots.first?.location
+        let currentLocation = harperParkingLots.first?.location
         let marker = GMSMarker(position: currentLocation!)
         marker.snippet = currentParkingLot.name
         marker.map = mapView
@@ -52,7 +52,7 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
         
     }
     
-  
+    
     
     
     
@@ -65,12 +65,12 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     }
     
     @objc func newLocation() {
-            if let index = collegeParkingLots.index(of: currentParkingLot) {
-                currentParkingLot = collegeParkingLots[index + 1]
-                if currentParkingLot == collegeParkingLots.last! {
-                    currentParkingLot = collegeParkingLots.first!
-                }
+        if let index = harperParkingLots.index(of: currentParkingLot) {
+            currentParkingLot = harperParkingLots[index + 1]
+            if currentParkingLot == harperParkingLots.last! {
+                currentParkingLot = harperParkingLots.first!
             }
+        }
         
         setMapCamera()
     }
@@ -89,7 +89,7 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
         let marker = GMSMarker(position: currentParkingLot.location)
         marker.title = currentParkingLot.name
         marker.map = mapView
-
+        
     }
     
     
@@ -109,7 +109,7 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         tappedMarker = marker
         
-
+        
         
         let position = tappedMarker?.position
         mapView.animate(toLocation: position!)
@@ -122,43 +122,43 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
         let parkingSpots: UInt32
         
         //Create custom info Window
-//        customInfoWindow.removeFromSuperview()
+        customInfoWindow.removeFromSuperview()
         customInfoWindow = loadNib()
         customInfoWindow.center = mapView.projection.point(for: position!)
         //-=192 is the value to use to put the view on top of the marker
         customInfoWindow.center.y += 160
         self.view.addSubview(customInfoWindow)
         customInfoWindow.setupPieChart()
-
+        
         let opaqueWhite = UIColor(white: 1, alpha: 0.85)
         customInfoWindow.layer.backgroundColor = opaqueWhite.cgColor
         customInfoWindow.layer.cornerRadius = 8
         customInfoWindow.backgroundColor = .white
         
-        if currentParkingLot.name == "NIU Parking Deck" {
+        if currentParkingLot.name == "Lot 1" {
             
-        parkingSpots = arc4random_uniform(969) + 50
-            customInfoWindow.fillChart(parkingData: ["Open": parkingSpots, "Total": UInt32(totalSpaces)])
-        customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
-        customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
-            
-        } else if currentParkingLot.name == "Parking Lot C" {
-            
-            parkingSpots = arc4random_uniform(109)
+            parkingSpots = arc4random_uniform(280) + 50
             customInfoWindow.fillChart(parkingData: ["Open": parkingSpots, "Total": UInt32(totalSpaces)])
             customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
             customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
             
-        } else if currentParkingLot.name == "Parking Lot 2" {
+        } else if currentParkingLot.name == "Lot 2" {
             
-            parkingSpots = arc4random_uniform(261)
+            parkingSpots = arc4random_uniform(336)
             customInfoWindow.fillChart(parkingData: ["Open": parkingSpots, "Total": UInt32(totalSpaces)])
             customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
             customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
             
-        } else if currentParkingLot.name == "Parking Lot A" {
+        } else if currentParkingLot.name == "Lot 3" {
             
-            parkingSpots = arc4random_uniform(85)
+            parkingSpots = arc4random_uniform(210)
+            customInfoWindow.fillChart(parkingData: ["Open": parkingSpots, "Total": UInt32(totalSpaces)])
+            customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
+            customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
+            
+        } else if currentParkingLot.name == "Lot 4" {
+            
+            parkingSpots = arc4random_uniform(250)
             customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
             customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
         }
@@ -192,9 +192,10 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     }
     
 }
-
+extension CorrectInfoWindow {
     
-
-    
-
-
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let index = highlight.y
+        print("Selected \(index)")
+    }
+}

@@ -45,7 +45,7 @@ class CorrectInfoWindow: UIView, ChartViewDelegate {
             dataEntries.append(entry)
         }
         
-        let colors = [UIColor.red, UIColor.blue]
+        let colors = [UIColor.red, UIColor.black]
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
         chartDataSet.colors = colors

@@ -1,22 +1,20 @@
 //
-//  InstitutionCell.swift
+//  HarperCell.swift
 //  YourSpotAwaits
 //
-//  Created by Kendall McCaskill on 4/4/18.
+//  Created by Kendall McCaskill on 4/28/18.
 //  Copyright © 2018 YourSpotAwaits. All rights reserved.
 //
 
 import UIKit
-import GoogleMaps
 
 
-
-class InstitutionCell: UITableViewCell {
+class HarperCell: UITableViewCell {
     
     var school: Institutions? {
         didSet {
-            universityName.text = school?.institutionName
-            coverImageView.image = school?.institutionImage
+            universityName.text = "Harper College"
+            coverImageView.image = #imageLiteral(resourceName: "Harper-73")
         }
     }
     
@@ -55,4 +53,3 @@ class InstitutionCell: UITableViewCell {
     }
     
 }
-
