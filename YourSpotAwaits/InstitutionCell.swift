@@ -39,7 +39,7 @@ class InstitutionCell: UITableViewCell {
         coverImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         coverImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         coverImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
-        coverImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        coverImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         addSubview(universityName)
         universityName.leftAnchor.constraint(equalTo: coverImageView.rightAnchor, constant: 8).isActive = true

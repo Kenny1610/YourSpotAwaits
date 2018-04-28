@@ -15,6 +15,7 @@ class CorrectInfoWindow: UIView, ChartViewDelegate {
     @IBOutlet weak var parkingLotTitleLabel: UILabel!
     @IBOutlet weak var parkingLotSpacesAvailable: UILabel!
     
+    
     let spacesOpenChart: PieChartView = {
         let p = PieChartView()
         p.translatesAutoresizingMaskIntoConstraints = false
@@ -28,39 +29,46 @@ class CorrectInfoWindow: UIView, ChartViewDelegate {
     func setupPieChart() {
         self.addSubview(spacesOpenChart)
         spacesOpenChart.topAnchor.constraint(equalTo: parkingLotSpacesAvailable.bottomAnchor, constant: 10).isActive = true
-        spacesOpenChart.widthAnchor.constraint(equalToConstant: 258).isActive = true
-        spacesOpenChart.heightAnchor.constraint(equalToConstant: 210).isActive = true
+        spacesOpenChart.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        spacesOpenChart.heightAnchor.constraint(equalToConstant: 200).isActive = true
         spacesOpenChart.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
-    let parkingData = ["Green": 50, "Blue": 30, "Red": 10]
+    lazy var parkingSpots = arc4random_uniform(100)
     
-    func fillChart() {
+//    let parkingData = ["Red": parkingSpots]
+    
+    func fillChart(parkingData: [String: UInt32]) {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in parkingData {
             let entry = PieChartDataEntry(value: Double(val), label: key)
             dataEntries.append(entry)
         }
         
-        let colors = [UIColor.green, UIColor.blue, UIColor.red]
+        let colors = [UIColor.red, UIColor.blue]
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
         chartDataSet.colors = colors
-        chartDataSet.sliceSpace = 2
+        chartDataSet.sliceSpace = 4
         chartDataSet.selectionShift = 3
         
         let chartData = PieChartData(dataSet: chartDataSet)
         
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        formatter.maximumFractionDigits = 0
+        chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+        
+       
+        
         spacesOpenChart.data = chartData
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        let index = highlight.y
-        print("Selected \(index)")
-    }
     
     func instanceFromNib() -> UIView {
         return UINib(nibName: "CorrectInfoWindowView", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
     }
+    
+
     
 }
