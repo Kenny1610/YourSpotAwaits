@@ -19,7 +19,6 @@
 		965FCD502074A322000AF00C /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD4F2074A322000AF00C /* MapController.swift */; };
 		965FCD542074A54E000AF00C /* InstitutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD532074A54E000AF00C /* InstitutionCell.swift */; };
 		965FCD562074A578000AF00C /* Institutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD552074A578000AF00C /* Institutions.swift */; };
-		965FCD5A2074A7D7000AF00C /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD592074A7D7000AF00C /* InfoWindow.swift */; };
 		965FCD5C20753D67000AF00C /* CorrectInfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 965FCD5B20753D67000AF00C /* CorrectInfoWindowView.xib */; };
 		965FCD5E20754069000AF00C /* CorrectInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */; };
 		965FCD60207748F3000AF00C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5F207748F3000AF00C /* LoginViewController.swift */; };
@@ -45,7 +44,6 @@
 		965FCD4F2074A322000AF00C /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		965FCD532074A54E000AF00C /* InstitutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutionCell.swift; sourceTree = "<group>"; };
 		965FCD552074A578000AF00C /* Institutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Institutions.swift; sourceTree = "<group>"; };
-		965FCD592074A7D7000AF00C /* InfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
 		965FCD5B20753D67000AF00C /* CorrectInfoWindowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectInfoWindowView.xib; sourceTree = "<group>"; };
 		965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectInfoWindow.swift; sourceTree = "<group>"; };
 		965FCD5F207748F3000AF00C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				965FCD5F207748F3000AF00C /* LoginViewController.swift */,
 				96785A742081D4EE007B629C /* RegisterViewController.swift */,
 				965FCD3D207494EE000AF00C /* AppDelegate.swift */,
-				965FCD592074A7D7000AF00C /* InfoWindow.swift */,
 				965FCD3F207494EE000AF00C /* ViewController.swift */,
 				965FCD4F2074A322000AF00C /* MapController.swift */,
 				96D9BF21209444E7003FDBC3 /* HarperMapController.swift */,
@@ -297,7 +294,6 @@
 				965FCD562074A578000AF00C /* Institutions.swift in Sources */,
 				965FCD542074A54E000AF00C /* InstitutionCell.swift in Sources */,
 				965FCD3E207494EE000AF00C /* AppDelegate.swift in Sources */,
-				965FCD5A2074A7D7000AF00C /* InfoWindow.swift in Sources */,
 				96D9BF20209443EC003FDBC3 /* HarperCell.swift in Sources */,
 				965FCD60207748F3000AF00C /* LoginViewController.swift in Sources */,
 				965FCD5E20754069000AF00C /* CorrectInfoWindow.swift in Sources */,
