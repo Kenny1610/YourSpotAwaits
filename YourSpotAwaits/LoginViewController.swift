@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    
     //Creating Image View with closure
     let titleImageView: UIImageView = {
         let imageView = UIImageView()
@@ -56,8 +57,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         p.textColor = .black
         p.borderStyle = .roundedRect
         p.keyboardType = .default
+        p.isSecureTextEntry = true
         return p
     }()
+    
     
     //Creating login button with closure
     let loginButton: UIButton = {
@@ -84,6 +87,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         register.layer.borderColor = UIColor.black.cgColor
         return register
     }()
+    
+    
+    
     
 //    //Create forgot password button
 //    let forgotPassword: UIButton = {

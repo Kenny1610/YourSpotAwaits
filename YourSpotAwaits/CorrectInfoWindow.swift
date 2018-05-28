@@ -11,6 +11,8 @@ import Charts
 import ChartsRealm
 
 class CorrectInfoWindow: UIView, ChartViewDelegate {
+    var x: Int?
+    
     
     @IBOutlet weak var parkingLotTitleLabel: UILabel!
     @IBOutlet weak var parkingLotSpacesAvailable: UILabel!

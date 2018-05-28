@@ -15,9 +15,6 @@ import FirebaseDatabase
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
-    
-    
-    
     let myColor = UIColor.black
     
     //Creating Image View with closure
@@ -91,6 +88,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return name
     }()
     
+    let parkingPassLabel: UILabel = {
+       let pass = UILabel()
+        pass.translatesAutoresizingMaskIntoConstraints = false
+        pass.text = "Please select the color of your parking pass."
+        pass.textAlignment = .center
+        pass.font = .systemFont(ofSize: 14)
+        pass.textColor = .black
+        
+        return pass
+    }()
+    
+    let parkingPassSegmentedControl: UISegmentedControl = {
+        let pass = UISegmentedControl()
+        pass.translatesAutoresizingMaskIntoConstraints = false
+        pass.insertSegment(withTitle: "Yellow", at: 0, animated: true)
+        pass.insertSegment(withTitle: "Blue", at: 1, animated: true)
+        return pass
+    }()
+    
     //Creating Register button with closure
     let registerButton: UIButton = {
         let register = UIButton()
@@ -134,7 +150,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(emailField)
         view.addSubview(passWord)
         view.addSubview(confirmPassword)
-    
+        view.addSubview(parkingPassLabel)
+        view.addSubview(parkingPassSegmentedControl)
         view.addSubview(nameField)
         view.addSubview(registerButton)
 //        view.addSubview(messageLabel)
@@ -184,9 +201,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         nameField.widthAnchor.constraint(equalToConstant: 300).isActive = true
         nameField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+        parkingPassLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        parkingPassLabel.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 8).isActive = true
+        parkingPassLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        parkingPassLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        parkingPassSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        parkingPassSegmentedControl.topAnchor.constraint(equalTo: parkingPassLabel.bottomAnchor, constant: 15).isActive = true
+        parkingPassSegmentedControl.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        parkingPassSegmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        if (parkingPassSegmentedControl.selectedSegmentIndex == 0) {
+            parkingPassSegmentedControl.tintColor = .yellow
+        } else if (parkingPassSegmentedControl.selectedSegmentIndex == 1) {
+            parkingPassSegmentedControl.tintColor = .blue
+        }
+        
         //Constraints for the register Button
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 15).isActive = true
+        registerButton.topAnchor.constraint(equalTo: parkingPassSegmentedControl.bottomAnchor, constant: 15).isActive = true
         registerButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         registerButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
       
@@ -202,6 +235,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         confirmPassword.delegate = self
         emailField.delegate = self
         nameField.delegate = self
+
         
     }
     
@@ -241,7 +275,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             if err != nil {
                 //show alert
                 self?.displayMessage(userMessage: "Unable to register you correctly. Please try again.")
-                print(err?.localizedDescription)
+                print(err?.localizedDescription as Any)
             } else {
                 self?.dismiss(animated: true, completion: nil)
             }
@@ -261,10 +295,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         myActivityIndicator.startAnimating()
         
         view.addSubview(myActivityIndicator)
-        
-        
-        
-    
         
         self.view.endEditing(true)
     }

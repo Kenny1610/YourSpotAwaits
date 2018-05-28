@@ -16,11 +16,11 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     let shapeLayer = CAShapeLayer()
     var mapView: GMSMapView?
     var school: Institutions?
-   
+    
     
     var tappedMarker: GMSMarker?
     var customInfoWindow = CorrectInfoWindow()
-    
+
     
     
     let collegeParkingLots = [ParkingLots(name: "NIU Parking Deck", location: CLLocationCoordinate2DMake(41.932347, -88.766415), zoom: 16.0, parkingSpaces: 969), ParkingLots(name: "Parking Lot C", location: CLLocationCoordinate2DMake(41.935683, -88.771528), zoom: 16.0, parkingSpaces: 109), ParkingLots(name: "Parking Lot 2", location: CLLocationCoordinate2DMake(41.936876, -88.762379), zoom: 16.0, parkingSpaces: 261), ParkingLots(name: "Parking Lot A", location: CLLocationCoordinate2DMake(41.939165, -88.760849), zoom: 16.0, parkingSpaces: 85)]
@@ -51,10 +51,6 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
         customInfoWindow = loadNib()
         
     }
-    
-  
-    
-    
     
     
     func setupNavigationBarStyles() {
