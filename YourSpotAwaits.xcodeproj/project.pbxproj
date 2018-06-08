@@ -23,6 +23,7 @@
 		965FCD5E20754069000AF00C /* CorrectInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */; };
 		965FCD60207748F3000AF00C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965FCD5F207748F3000AF00C /* LoginViewController.swift */; };
 		96785A752081D4EE007B629C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96785A742081D4EE007B629C /* RegisterViewController.swift */; };
+		96AD232720C4B6830046D92D /* GeolocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD232620C4B6830046D92D /* GeolocationResponse.swift */; };
 		96D9BF20209443EC003FDBC3 /* HarperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D9BF1F209443EC003FDBC3 /* HarperCell.swift */; };
 		96D9BF22209444E7003FDBC3 /* HarperMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D9BF21209444E7003FDBC3 /* HarperMapController.swift */; };
 		C0209B1A4CD4A0E5A766D22F /* Pods_YourSpotAwaits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99FCD47D9C392D3055AFF42 /* Pods_YourSpotAwaits.framework */; };
@@ -48,6 +49,7 @@
 		965FCD5D20754069000AF00C /* CorrectInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectInfoWindow.swift; sourceTree = "<group>"; };
 		965FCD5F207748F3000AF00C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96785A742081D4EE007B629C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		96AD232620C4B6830046D92D /* GeolocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationResponse.swift; sourceTree = "<group>"; };
 		96D9BF1F209443EC003FDBC3 /* HarperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarperCell.swift; sourceTree = "<group>"; };
 		96D9BF21209444E7003FDBC3 /* HarperMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarperMapController.swift; sourceTree = "<group>"; };
 		E6E64D0092B75CCDB5F66793 /* Pods-YourSpotAwaits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourSpotAwaits.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourSpotAwaits/Pods-YourSpotAwaits.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,9 +124,18 @@
 				9649AE622090ECED0087BC4D /* GoogleService-Info.plist */,
 				965FCD49207494EF000AF00C /* Info.plist */,
 				9649AE6420910AE70087BC4D /* AppUser.swift */,
+				96AD232520C4AD950046D92D /* NetworkingLayer */,
 				9649AE6620910DBE0087BC4D /* Services */,
 			);
 			path = YourSpotAwaits;
+			sourceTree = "<group>";
+		};
+		96AD232520C4AD950046D92D /* NetworkingLayer */ = {
+			isa = PBXGroup;
+			children = (
+				96AD232620C4B6830046D92D /* GeolocationResponse.swift */,
+			);
+			path = NetworkingLayer;
 			sourceTree = "<group>";
 		};
 		A1242C84E6649D881BA49D47 /* Frameworks */ = {
@@ -209,7 +220,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		18153FC5BE21226E19BFEFA1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -241,7 +252,7 @@
 		};
 		56AF9A6877AB1C9048A9048A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -252,14 +263,14 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-YourSpotAwaits-checkManifestLockResult.txt",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F542512C2B181A883711581A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -287,6 +298,7 @@
 				965FCD40207494EE000AF00C /* ViewController.swift in Sources */,
 				96785A752081D4EE007B629C /* RegisterViewController.swift in Sources */,
 				96D9BF22209444E7003FDBC3 /* HarperMapController.swift in Sources */,
+				96AD232720C4B6830046D92D /* GeolocationResponse.swift in Sources */,
 				9649AE6820910DE70087BC4D /* UserDefaultsManager.swift in Sources */,
 				9649AE6A20910F280087BC4D /* FirebaseAPI.swift in Sources */,
 				965FCD502074A322000AF00C /* MapController.swift in Sources */,

@@ -102,41 +102,16 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
     
     
     //Reset custom infoWindow whenever marker is tapped
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        tappedMarker = marker
-        
-
-        
-        let position = tappedMarker?.position
-        mapView.animate(toLocation: position!)
-        let point = mapView.projection.point(for: position!)
-        let newPoint = mapView.projection.coordinate(for: point)
-        let camera = GMSCameraUpdate.setTarget(newPoint)
-        mapView.animate(with: camera)
-        
+    fileprivate func parkingLotInformation() {
         let totalSpaces = currentParkingLot.parkingSpaces
         let parkingSpots: UInt32
         
-        //Create custom info Window
-//        customInfoWindow.removeFromSuperview()
-        customInfoWindow = loadNib()
-        customInfoWindow.center = mapView.projection.point(for: position!)
-        //-=192 is the value to use to put the view on top of the marker
-        customInfoWindow.center.y += 160
-        self.view.addSubview(customInfoWindow)
-        customInfoWindow.setupPieChart()
-
-        let opaqueWhite = UIColor(white: 1, alpha: 0.85)
-        customInfoWindow.layer.backgroundColor = opaqueWhite.cgColor
-        customInfoWindow.layer.cornerRadius = 8
-        customInfoWindow.backgroundColor = .white
-        
         if currentParkingLot.name == "NIU Parking Deck" {
             
-        parkingSpots = arc4random_uniform(969) + 50
+            parkingSpots = arc4random_uniform(969) + 50
             customInfoWindow.fillChart(parkingData: ["Open": parkingSpots, "Total": UInt32(totalSpaces)])
-        customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
-        customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
+            customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
+            customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
             
         } else if currentParkingLot.name == "Parking Lot C" {
             
@@ -158,6 +133,37 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
             customInfoWindow.parkingLotTitleLabel.text = currentParkingLot.name
             customInfoWindow.parkingLotSpacesAvailable.text = "There are currently \(parkingSpots) available out of \(UInt32(totalSpaces)) total"
         }
+    }
+    
+    fileprivate func windowDesign() {
+        let opaqueWhite = UIColor(white: 1, alpha: 0.85)
+        customInfoWindow.layer.backgroundColor = opaqueWhite.cgColor
+        customInfoWindow.layer.cornerRadius = 8
+        customInfoWindow.backgroundColor = .white
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        customInfoWindow.removeFromSuperview()
+        tappedMarker = marker
+        
+        let position = tappedMarker?.position
+        mapView.animate(toLocation: position!)
+        let point = mapView.projection.point(for: position!)
+        let newPoint = mapView.projection.coordinate(for: point)
+        let camera = GMSCameraUpdate.setTarget(newPoint)
+        mapView.animate(with: camera)
+        
+        
+        //Create custom info Window
+        customInfoWindow.removeFromSuperview()
+        customInfoWindow = loadNib()
+        customInfoWindow.center = mapView.projection.point(for: position!)
+        //-=192 is the value to use to put the view on top of the marker
+        customInfoWindow.center.y += 160
+        self.view.addSubview(customInfoWindow)
+        customInfoWindow.setupPieChart()
+        windowDesign()
+        parkingLotInformation()
         
         //Return false so marker event is still handled by delegate
         return false
@@ -169,6 +175,7 @@ class MapController: UIViewController, GMSMapViewDelegate, ChartViewDelegate {
             let position = tappedMarker?.position
             customInfoWindow.center = mapView.projection.point(for: position!)
             customInfoWindow.center.y -= 140
+            customInfoWindow.removeFromSuperview()
         }
         
     }
